@@ -1,0 +1,17 @@
+install.packages("wordcloud")
+install.packages("RColorBrewer")
+install.packages("KoNLP")
+library(wordcloud)
+library(RColorBrewer)
+library(KoNLP)
+
+pal2<-brewer.pal(8,"Dark2")
+text<-readLines("C:/Users/user/Dropbox/개인자료/빅데이터/스티븐잡스연설문.txt")
+text
+noun<-sapply(text,extractNoun,USE.NAMES = F)
+noun
+noun2<-unlist(noun)
+noun2
+word_count<-table(noun2)
+head(sort(word_count,decreasing = TRUE),10)
+wordcloud(names(word_count),freq=word_count,scale = c(6,0,3),min.freq = 3,random.color = F, rot.per = .1,colors = pal2)
