@@ -1,0 +1,10 @@
+average(범위) : 평균
+mid(범위)  : 중간값
+mode(범위) : 최빈값
+stdev(범위) : 중간고사드
+var(범위) : 분산
+min(범위) : 최소값
+max(범위) :최대값
+quartille(범위,1) : 25%백분위
+quartille(범위,2) : 50%백분위
+quartille(범위,3) : 75%백분위
