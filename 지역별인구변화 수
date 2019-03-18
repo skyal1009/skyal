@@ -1,0 +1,28 @@
+# 페이지 로딩 및 데이터 파일 열기
+library(wordcloud)
+library(RColorBrewer)
+pal2 <- brewer.pal(8,"Dark2")
+data <- read.csv(file.choose(), header=T)
+head(data)
+
+# 데이터 정제: 불필요 지역 제외
+# '전국' 지역 제외 
+data2 <- data[data$행정구역.시군구.별 != "전국", ]
+head(data2)
+# '구’ 단위 지역 통계 삭제
+x <- grep("구$", data2$행정구역.시군구.별)
+data3 <- data2[-c(x), ]
+head(data3)
+
+# 전입자 수가  많은 지역
+data4 <- data3[data3$순이동.명>0, ]
+word <- data4$행정구역.시군구.별
+frequency <- data4$순이동.명
+wordcloud(word, frequency, colors=pal2)
+
+# 전출자 수가 많은 지역
+data5 <- data3[data3$순이동.명<0, ]
+word <- data5$행정구역.시군구.별
+frequency <- abs(data5$순이동.명)
+wordcloud(word, frequency, colors=pal2)
+
