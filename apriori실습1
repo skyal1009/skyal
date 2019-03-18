@@ -1,0 +1,18 @@
+x<-data.frame(
+  beer=c(0,1,1,1,0),
+  bread=c(1,1,0,1,1),
+  cola=c(0,0,1,0,1),
+  diapers=c(0,1,1,1,1),
+  eggs=c(0,1,0,0,0),
+  milk=c(1,0,1,1,1)
+)
+install.packages("arules")
+library(arules)
+
+trans<-as.matrix(x,"Transaction")
+trans
+
+rules1<-apriori(trans,parameter = list(supp=0.2, conf=0.6,target="rules"))
+rules1
+
+inspect(sort(rules1))
