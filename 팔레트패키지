@@ -1,0 +1,9 @@
+install.packages("wordcloud")
+install.packages("RColorBrewer")
+library(RColorBrewer)      
+library(wordcloud)
+
+pal2 <- brewer.pal(8,"Dark2")
+word <- c("인천광역시", "강화군", "옹진군")
+frequency <- c(651, 85, 61)
+wordcloud(word, frequency, colors=pal2)
