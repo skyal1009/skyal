@@ -1,0 +1,8 @@
+hap=0
+start=int(input("시작값을 입력하세요"))
+stop=int(input("종료값을 입력하세요"))
+step=int(input("증가값을 입력하세요"))
+
+for i in range(start, stop+1, step):
+  hap=hap+i
+print("%d에서 %d까지 %d씩 증가시킨 값의 합계: %d"%(start, stop,step,hap))
